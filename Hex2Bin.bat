@@ -1,0 +1,1 @@
+D:\Keil_v5\ARM\ARMCC\bin\fromelf.exe   --bin -o  ..\OBJ\HPLC_COLLECTOR_Mini.bin ..\OBJ\HPLC_COLLECTOR_Mini.axf
