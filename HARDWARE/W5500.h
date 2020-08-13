@@ -1,6 +1,8 @@
 #ifndef	_W5500_H_
 #define	_W5500_H_
 
+#include "sys.h"
+
 /***************** Common Register *****************/
 #define MR		0x0000
 	#define RST		0x80
@@ -204,13 +206,13 @@
 #define S_TX_SIZE	2048  	/*定义Socket发送缓冲区的大小，可以根据W5500_TMSR的设置修改 */
 
 /***************----- W5500 GPIO定义 -----***************/
-#define W5500_SCS		GPIO_Pin_12	//定义W5500的CS引脚	 
-#define W5500_SCS_PORT	GPIOB
+#define W5500_SCS		GPIO_Pin_4	//定义W5500的CS引脚	 
+#define W5500_SCS_PORT	GPIOA
 	
-#define W5500_RST		GPIO_Pin_6	//定义W5500的RST引脚
+#define W5500_RST		GPIO_Pin_4	//定义W5500的RST引脚
 #define W5500_RST_PORT	GPIOC
 
-#define W5500_INT		GPIO_Pin_7	//定义W5500的INT引脚
+#define W5500_INT		GPIO_Pin_5	//定义W5500的INT引脚
 #define W5500_INT_PORT	GPIOC
 
 /***************----- 网络参数变量定义 -----***************/

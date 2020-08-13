@@ -184,6 +184,21 @@ void ComProcessFrame( void *buffer, uint16 size )
                     ComProcessFrame_ReadGlobalExternUser(msg, size);
                 break;
           
+			//馏分收集器功能码*********************************************************
+			case PFC_COLLECTOR_CHANNEL://通道
+				Com_Ack();
+				if(write)
+				{
+						SetCoilMutual(data[0]);
+						cDebug("Write : Coil %d\r\n", data[0]);
+				}
+				else
+				{
+						Com_SetCoil(man.currentKey);//
+						cDebug("Read : Coil %d\r\n", man.currentKey);
+				}
+			break;    
+			
 			default:
                 Com_NAck();
 				cDebug("\r\n '%02x' Error Function Code !!\r\n", pfc);//cDebug("\r\n Function Code Error !!\r\n");

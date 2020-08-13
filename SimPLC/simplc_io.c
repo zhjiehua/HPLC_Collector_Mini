@@ -116,21 +116,27 @@ void SIMPLC_IO_Init(void)
 //刷新IO点
 void SIMPLC_IO_Refresh(void)
 {
-	uint8_t i;	
+	uint8_t i;
+	static uint32_t inputLoopCnt = 0;
 /*----------------------------输入点---------------------------------*/
 	//记录输入点上一状态
 	for(i=0;i<(IN_NUM+7)/8;i++)
 		IN_Last[i] = IN[i];
 
 	//读取输入点
-	_GetX(!KEY1, X_KEY1);
-	_GetX(!KEY2, X_KEY2);
-	_GetX(!KEY3, X_KEY3);
-	_GetX(!KEY4, X_KEY4);
-	_GetX(!KEY5, X_KEY5);
-	_GetX(!KEY6, X_KEY6);
-	_GetX(!KEY7, X_KEY7);
-	_GetX(!KEY8, X_KEY8);
+	if(inputLoopCnt++ > 5000)
+	{
+		inputLoopCnt = 0;
+		
+		_GetX(!KEY1, X_KEY1);
+		_GetX(!KEY2, X_KEY2);
+		_GetX(!KEY3, X_KEY3);
+		_GetX(!KEY4, X_KEY4);
+		_GetX(!KEY5, X_KEY5);
+		_GetX(!KEY6, X_KEY6);
+		_GetX(!KEY7, X_KEY7);
+		_GetX(!KEY8, X_KEY8);
+	}
 	_GetX(!MI_EXT, X_EXT);
 	
 	for(i=0;i<(IN_NUM+7)/8;i++)

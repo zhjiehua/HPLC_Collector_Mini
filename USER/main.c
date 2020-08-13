@@ -30,10 +30,6 @@ int main(void)
 	delay_init();	    	 //延时函数初始化	  
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 	 //设置NVIC中断分组2:2位抢占优先级，2位响应优先级
 	uart_init(115200);	 //串口初始化为115200
-	
-//		man.comType = 1;
-//    ComUart_Init(115200);//串口用于打印调试信息
-
     
     cDebug("Hello HPLC Pump!\r\n");
     
@@ -82,7 +78,8 @@ int main(void)
     UsefulDaysCheck();
     
     IO_Init();
-
+		SIMPLC_IO_Init();
+		
     TIM2_Int_Init(499, 7199); //10KHz时钟，定时50ms，更新压力用
 
     if(man.comType == 0)
@@ -103,6 +100,8 @@ int main(void)
     
 		SML(M_POWERON, 1);
 		SYL(Y_COIL_POWER, 0);//低电平选择12V电源
+		
+		SetCoilMutual(Y_COIL8);//默认打开第八个电磁阀
 		
 	while(1)
 	{
@@ -152,8 +151,8 @@ int main(void)
         }
 
         {
-            static uint16_t cnt = 0;
-            if(cnt++ > 1000)
+            static uint32_t cnt = 0;
+            if(cnt++ > 10000)
             {
                 cnt = 0;
                 LED = !LED;

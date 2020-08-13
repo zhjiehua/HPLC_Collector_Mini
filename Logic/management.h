@@ -8,7 +8,7 @@
 
 //相关信息
 #define HARDWARE_VERSION    "SolValB01"
-#define SOFTWARE_VERSION    "V1.0.0"
+#define SOFTWARE_VERSION    "V1.1.0"
 
 //泵
 #define PULSECOMPENTABLE_SIZE           40
@@ -199,7 +199,7 @@ typedef struct
     uint8_t priority;//权限级数
 		
 		
-		uint8_t key;
+		uint8_t currentKey;
 		uint8_t beepFlag;//按键响一下,报警连续响
     
 }Man_TypeDef;
@@ -208,5 +208,7 @@ extern Man_TypeDef man;
 
 void InitMan(void);
 void UploadAllData(void);
+
+void SetCoilMutual(uint8_t num);
 
 #endif

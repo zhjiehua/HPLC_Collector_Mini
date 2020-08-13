@@ -10,72 +10,67 @@
 #include "IO.h"
 #include "simplc_io.h"
 
+
 void ProjectRunning(void)
 {
-	if(GXR(X_KEY1))
+	if(GXF(X_KEY1))
 	{
-		if(GYL(Y_COIL1))
-			SYL(Y_COIL1, 0);
-		else
-			SYL(Y_COIL1, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL1);
 	}
 	
-	if(GXR(X_KEY2))
+	if(GXF(X_KEY2))
 	{
-		if(GYL(Y_COIL2))
-			SYL(Y_COIL2, 0);
-		else
-			SYL(Y_COIL2, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL2);
 	}
 	
-	if(GXR(X_KEY3))
+	if(GXF(X_KEY3))
 	{
-		if(GYL(Y_COIL3))
-			SYL(Y_COIL3, 0);
-		else
-			SYL(Y_COIL3, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL3);
 	}
 	
-	if(GXR(X_KEY4))
+	if(GXF(X_KEY4))
 	{
-		if(GYL(Y_COIL4))
-			SYL(Y_COIL4, 0);
-		else
-			SYL(Y_COIL4, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL4);
 	}
 	
-	if(GXR(X_KEY5))
+	if(GXF(X_KEY5))
 	{
-		if(GYL(Y_COIL5))
-			SYL(Y_COIL5, 0);
-		else
-			SYL(Y_COIL5, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL5);
 	}
 	
-	if(GXR(X_KEY6))
+	if(GXF(X_KEY6))
 	{
-		if(GYL(Y_COIL6))
-			SYL(Y_COIL6, 0);
-		else
-			SYL(Y_COIL6, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL6);
 	}
 	
-	if(GXR(X_KEY7))
+	if(GXF(X_KEY7))
 	{
-		if(GYL(Y_COIL7))
-			SYL(Y_COIL7, 0);
-		else
-			SYL(Y_COIL7, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL7);
 	}
 	
-	if(GXR(X_KEY8))
+	if(GXF(X_KEY8))
 	{
-		if(GYL(Y_COIL8))
-			SYL(Y_COIL8, 0);
-		else
-			SYL(Y_COIL8, 1);
+		man.beepFlag = 1;
+		
+		SetCoilMutual(Y_COIL8);
 	}
 	
+	
+	//Õ‚≤ø ‰»Î
 	if(GXR(X_EXT))
 	{
 		cDebug("X_EXT signal\r\n");

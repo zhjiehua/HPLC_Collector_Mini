@@ -208,7 +208,7 @@ void ComLan_Init(void)
 	W5500_Hardware_Reset();		//硬件复位W5500
     
     W5500_Init();		//初始化W5500寄存器函数
-    if(Detect_Gateway() == FALSE);	//检查网关服务器 
+    if(Detect_Gateway() == FALSE)	//检查网关服务器 
         cDebug("Detect_Gateway Error!\r\n");
     Socket_Init(0);		//指定Socket(0~7)初始化,初始化端口0
 
@@ -219,7 +219,8 @@ void ComLan_Loop(void)
 {
     W5500_Socket_Set();//W5500端口初始化配置
 
-    if(W5500_Interrupt)//处理W5500中断		
+    //if(W5500_Interrupt)//处理W5500中断
+		if(GPIO_ReadInputDataBit(W5500_INT_PORT, W5500_INT) == Bit_RESET)
     {
         W5500_Interrupt_Process();//W5500中断处理程序框架
     }

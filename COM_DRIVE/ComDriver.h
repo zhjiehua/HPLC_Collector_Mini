@@ -49,23 +49,8 @@ void Com_SetOutput(uint8_t inputNumber, uint8_t level);
 void Com_SetTick(void);
 void Com_SetSystemError(uint8_t errorNum);
 
-//泵基本指令
-void Com_SetFlow(float flow);
-void Com_SetFlowPercent(uint8_t percent);
-void Com_SetPressMin(float press);
-void Com_SetPressMax(float press);
-void Com_SetPressWarning(float press);
-void Com_SetStartStop(uint8_t flag);
-void Com_SetPauseRestore(uint8_t flag);
-void Com_SetPurge(uint8_t flag);
-void Com_SetPurgeFlow(float flow);
-void Com_SetPurgeTime(uint8_t time);
-void Com_SetPressZeroVoltage(float voltage);
-void Com_SetPressUploadFreq(uint8_t factor);
-void Com_SetPressCompen(uint8_t flag);
-void Com_SetMode(uint8_t mode);
-void Com_SetPress(float press);
-void Com_SetRunMode(uint8_t mode);
+//馏分收集器基本指令
+void Com_SetCoil(uint8_t num);
 
 //系统扩展=============================================
 void Com_SystemExt_SetRandomCode(uint32_t code);
@@ -81,22 +66,5 @@ void Com_SystemExt_SetModelString(uint8_t *str);//
 void Com_SystemExt_SetTotalUsedTime(uint32_t time);
 void Com_SystemExt_SetSaveAllData(void);
 void Com_SystemExt_SetProtocol(uint8_t protocol);
-
-//泵扩展指令
-void Com_SystemExt_SetWorkMode(uint8_t workMode);
-void Com_SystemExt_SetFlowCalibDataCMD(uint8 cmd);
-void Com_SystemExt_SetFlowCalibData(float flow, float realFlow);
-void Com_SystemExt_SetFlowCalibLoadFlow(float flow);
-void Com_SystemExt_SetFlowCalibLoadReadFlow(float flow);
-void Com_SystemExt_SetFlowCalibLoadPress(float press);
-void Com_SystemExt_SetPressCalibDataCMD(uint8 cmd);
-void Com_SystemExt_SetPressCalibData(float press, float realPress);
-void Com_SystemExt_SetPulseCompenDataCMD(uint8 cmd);
-void Com_SystemExt_SetPulseCompenData(float position, float compenFactor);
-void Com_SystemExt_SetPulseCompenDebugCMD(uint8 cmd);
-void Com_SystemExt_SetPulseCompenGearPos(int32_t pos);
-void Com_SystemExt_SetStepMotorCurrentRun(uint8 current);
-void Com_SystemExt_SetMotorCurrentCMD(uint8 cmd);
-void Com_SystemExt_SetMotorCurrent(float flow, uint8_t current);
 
 #endif      //_HMI_DRIVER_

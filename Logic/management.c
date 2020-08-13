@@ -17,6 +17,7 @@
 
 #include "wdg.h"
 #include "Key.h"
+#include "simplc_io.h"
 
 Man_TypeDef man;
 
@@ -159,6 +160,8 @@ void InitMan(void)
     
     IWDG_Feed();
 		
+		//man.comType = 1;
+		
     cDebug("man.machineAddress = %d\r\n", man.machineAddress);
     cDebug("man.model = %d\r\n", man.model);
     cDebug("man.modelString = %s\r\n", man.modelString);
@@ -194,9 +197,7 @@ void InitMan(void)
     cDebug("EEPROM_ADDR_MAX = %d\r\n", EE_TYPE);//EEPROM最大地址
     
     man.controlState = Controller_All;
-    
-    //man.debugMode |= PUMPMODE_PRESSCALIB;
-    
+
     man.prevInput = 0x03;
     man.curInput = 0x03;
     
@@ -237,3 +238,38 @@ void UploadAllData(void)
   Com_SystemExt_SetSaveAllData();//结束
 }
 
+void SetCoilMutual(uint8_t num)
+{
+	uint8_t i;
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	
+	if(num > Y_COIL8 || man.currentKey == num)
+		return;
+	
+	if(!GYL(num))
+	{
+		for(i=0;i<=Y_COIL8;i++)
+		{
+			if(num == i)
+				SYL(num, 1);
+			else
+				SYL(num, 0);
+		}
+	}
+	
+	//恢复上一按键引脚的输入特性
+	GPIO_InitStructure.GPIO_Pin = KeyPin[man.currentKey].pin;	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;	//输入 
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+  GPIO_Init(KeyPin[man.currentKey].port, &GPIO_InitStructure);					 
+  GPIO_SetBits(KeyPin[man.currentKey].port, KeyPin[man.currentKey].pin);
+	
+	//点亮按键LED灯
+	GPIO_InitStructure.GPIO_Pin = KeyPin[num].pin;	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;	 //输出
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+  GPIO_Init(KeyPin[num].port, &GPIO_InitStructure);					 
+  GPIO_ResetBits(KeyPin[num].port, KeyPin[num].pin);
+	
+	man.currentKey = num;
+}

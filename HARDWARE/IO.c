@@ -91,9 +91,9 @@ void IO_Init(void)
 extern unsigned char W5500_Interrupt;
 void EXTI9_5_IRQHandler(void)
 {
-	if(EXTI_GetITStatus(EXTI_Line7) != RESET)
+	if(EXTI_GetITStatus(EXTI_Line5) != RESET)
 	{
-		EXTI_ClearITPendingBit(EXTI_Line7);
+		EXTI_ClearITPendingBit(EXTI_Line5);
 		W5500_Interrupt=1;
 	}
 }

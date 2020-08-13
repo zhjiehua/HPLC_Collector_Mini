@@ -13,6 +13,14 @@
 #define KEY7   	PBin(4)
 #define KEY8	  PBin(6)
 
+typedef struct
+{
+	GPIO_TypeDef *port;
+	uint16_t pin;
+}Key_Pin_TypeDef;
+
 void Key_Init(void);
+
+extern Key_Pin_TypeDef KeyPin[];
 
 #endif
