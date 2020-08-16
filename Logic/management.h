@@ -8,7 +8,7 @@
 
 //相关信息
 #define HARDWARE_VERSION    "SolValB01"
-#define SOFTWARE_VERSION    "V1.1.0"
+#define SOFTWARE_VERSION    "V1.1.1"
 
 //泵
 #define PULSECOMPENTABLE_SIZE           40

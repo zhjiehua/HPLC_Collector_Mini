@@ -251,9 +251,9 @@ void SetCoilMutual(uint8_t num)
 		for(i=0;i<=Y_COIL8;i++)
 		{
 			if(num == i)
-				SYL(num, 1);
+				SYL(i, 1);
 			else
-				SYL(num, 0);
+				SYL(i, 0);
 		}
 	}
 	
