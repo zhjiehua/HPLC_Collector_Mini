@@ -31,7 +31,7 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 	 //设置NVIC中断分组2:2位抢占优先级，2位响应优先级
 	uart_init(115200);	 //串口初始化为115200
     
-    cDebug("Hello HPLC Pump!\r\n");
+    cDebug("Hello HPLC Colloetor!\r\n");
     
     queue_init(&comQueue, comQueueBuffer, COM_QUEUE_MAX_SIZE);
 
